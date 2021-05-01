@@ -12,6 +12,7 @@ app.get('/api/notes', (req, res) => res.json(storedNotes));
 app.post('/api/notes', (req, res) => {
     req.body.id = nanoid();
     storedNotes.push(req.body);
+    fs.writeFileSync('../Develop/db//db.json', JSON.stringify(storedNotes));
     res.json(storedNotes); 
 });
 }
