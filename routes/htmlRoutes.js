@@ -9,7 +9,12 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname,'../public/notes.html'));
     });
 
-    // routes the user to the index html page in the public folder when there isn't a matching route above, i could have put the "/" to make it the homepage but given this application having only one other page i figured i'd make this the default so the user doesn't receive page not found errors
+    // routes the user to the index html page in the public folder 
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname,'../public/index.html'));
+    });
+
+   // routes the user to the index html page in the public folder when there isn't a matching route above
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname,'../public/index.html'));
     });
